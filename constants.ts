@@ -49,9 +49,32 @@ export const PROJECTS: Project[] = [
     title: "Exotic Jeweler",
     category: "Shopify Design",
     year: "2024",
-    imageUrl: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?q=80&w=1000&auto=format&fit=crop",
+    // Hero Image (Direct Imgur Link)
+    imageUrl: "https://i.imgur.com/X7AW3Hw.png", 
     link: "https://exoticjeweler.com/",
-    caseStudy: "For Exotic Jeweler, the goal was to create a high-converting Shopify store that reflected the luxury and exclusivity of their products. I redesigned the UX to minimize friction during checkout and implemented a dark, immersive UI that highlights the brilliance of the diamonds. The project involved custom Liquid development, 3D product integration, and speed optimization, resulting in a 40% increase in mobile conversions."
+    caseStudy: "A high-converting Shopify store redesign focusing on luxury and exclusivity.",
+    extendedDetails: {
+      role: "Shopify Designer & Developer",
+      platform: "Shopify",
+      clientOverview: "Exotic Jeweler is a boutique jewelry brand specializing in rare gemstones and bespoke engagement rings. The brand is defined by its commitment to exclusivity, craftsmanship, and providing a luxury experience that rivals visiting a physical showroom.",
+      challenge: "The client needed a digital storefront that could translate the tactile and emotional experience of buying fine jewelry into an online format. Challenges included overcoming the hesitation customers feel when buying high-value items online, accurately showcasing the sparkle and scale of intricate pieces, and creating a seamless path to purchase for both impulsive buyers and those requiring consultation.",
+      solution: "I designed and developed a custom Shopify experience that prioritizes visual storytelling and brand immersion. By utilizing a minimalist UI, the design allows the products to take center stage. The design philosophy was 'Luxury through Simplicity'—using plenty of whitespace, elegant typography, and high-quality imagery to evoke sophistication.",
+      features: [
+        "Immersive Product Pages with deep-zoom & video integration",
+        "Advanced Filtering & Search by metal, cut, and price",
+        "Mobile-First Design optimized for smartphone conversions",
+        "Trust Signals integration (Certifications, Secure Checkout, Reviews)",
+        "Seamless Mega Menu navigation"
+      ],
+      techStack: ["Shopify (OS 2.0)", "HTML5/CSS3", "Liquid", "JavaScript", "Figma"],
+      result: "The new Exotic Jeweler website delivers a premium digital experience that reflects the quality of the physical product. The site is optimized for both speed and conversion, resulting in a 40% increase in mobile conversions and providing a solid foundation for the brand's digital growth.",
+      images: [
+        "https://i.imgur.com/6kt9RKk.png", // Featured Product
+        "https://i.imgur.com/IbxhWib.png", // Staff Pick
+        "https://i.imgur.com/PSMBasj.png", // Men's Collection
+        "https://i.imgur.com/11tf2td.png"  // Ring Detail
+      ]
+    }
   },
   {
     id: 2,

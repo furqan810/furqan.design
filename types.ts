@@ -12,6 +12,18 @@ export interface Service {
   tags: string[]; // Added tags for more detail
 }
 
+export interface ProjectDetails {
+  role: string;
+  platform: string;
+  clientOverview: string;
+  challenge: string;
+  solution: string;
+  features: string[];
+  techStack: string[];
+  result: string;
+  images: string[]; // Gallery images
+}
+
 export interface Project {
   id: number;
   title: string;
@@ -19,7 +31,8 @@ export interface Project {
   year: string;
   imageUrl: string;
   link?: string;
-  caseStudy: string; // New field for the document/description
+  caseStudy: string; // Brief description/Fallback
+  extendedDetails?: ProjectDetails; // Optional rich content
 }
 
 export interface SocialLink {

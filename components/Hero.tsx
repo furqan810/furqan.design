@@ -3,21 +3,6 @@ import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-// Add type declarations for Three.js elements in JSX to fix TypeScript errors
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      mesh: any;
-      meshStandardMaterial: any;
-      ambientLight: any;
-      directionalLight: any;
-      pointLight: any;
-      icosahedronGeometry: any;
-      [elemName: string]: any;
-    }
-  }
-}
-
 // 3D Shape Component
 const FloatingShape = ({ 
   position, 

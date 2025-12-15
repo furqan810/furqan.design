@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS } from '../constants';
-import { ArrowUpRight, X, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, X, ExternalLink, CheckCircle } from 'lucide-react';
 import { Project } from '../types';
 
 const Portfolio: React.FC = () => {
@@ -19,6 +19,12 @@ const Portfolio: React.FC = () => {
       document.body.style.overflow = 'unset';
     };
   }, [selectedProject]);
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.onerror = null; // Prevent infinite loop
+    // Set a subtle, abstract fallback image
+    e.currentTarget.src = "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000&auto=format&fit=crop";
+  };
 
   return (
     <section id="work" className="py-24 px-6 md:px-12 scroll-mt-20">
@@ -75,12 +81,13 @@ const Portfolio: React.FC = () => {
                     animate={{ opacity: 1, scale: 1, rotate: 0 }}
                     exit={{ opacity: 0, scale: 0.9, rotate: -2 }}
                     transition={{ duration: 0.3 }}
-                    className="hidden lg:block absolute z-30 top-1/2 right-[25%] w-[450px] h-[300px] -translate-y-1/2 pointer-events-none rounded-lg overflow-hidden shadow-2xl border border-neutral-200 dark:border-neutral-700"
+                    className="hidden lg:block absolute z-30 top-1/2 right-[25%] w-[450px] h-[300px] -translate-y-1/2 pointer-events-none rounded-lg overflow-hidden shadow-2xl border border-neutral-200 dark:border-neutral-700 bg-white"
                     >
                     <img 
                         src={project.imageUrl} 
                         alt={project.title} 
                         className="w-full h-full object-cover" 
+                        onError={handleImageError}
                     />
                     </motion.div>
                 )}
@@ -108,7 +115,7 @@ const Portfolio: React.FC = () => {
             {/* Modal Content */}
             <motion.div 
                 layoutId={`project-container-${selectedProject.id}`}
-                className="w-full max-w-4xl max-h-[90vh] bg-white dark:bg-neutral-900 rounded-xl overflow-hidden shadow-2xl relative flex flex-col z-[110]"
+                className="w-full max-w-5xl max-h-[90vh] bg-white dark:bg-neutral-900 rounded-xl overflow-hidden shadow-2xl relative flex flex-col z-[110]"
             >
                 {/* Header */}
                 <div className="p-6 md:p-8 flex justify-between items-start border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 sticky top-0 z-20">
@@ -137,41 +144,162 @@ const Portfolio: React.FC = () => {
                             src={selectedProject.imageUrl} 
                             alt={selectedProject.title} 
                             className="w-full h-full object-cover"
+                            onError={handleImageError}
                         />
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-                        <div className="md:col-span-2 space-y-6">
-                            <h4 className="text-xl font-bold uppercase tracking-tight">Project Overview</h4>
-                            <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">
-                                {selectedProject.caseStudy}
-                            </p>
-                        </div>
+                    {selectedProject.extendedDetails ? (
+                      /* Rich Content Layout */
+                      <div className="space-y-12">
+                         {/* Meta Data Grid */}
+                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-8 border-b border-neutral-200 dark:border-neutral-800">
+                            <div>
+                                <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-2">Role</h4>
+                                <p className="font-medium">{selectedProject.extendedDetails.role}</p>
+                            </div>
+                            <div>
+                                <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-2">Platform</h4>
+                                <p className="font-medium">{selectedProject.extendedDetails.platform}</p>
+                            </div>
+                             <div>
+                                <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-2">Website</h4>
+                                {selectedProject.link ? (
+                                   <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline">
+                                     Visit Live Site <ExternalLink className="w-3 h-3" />
+                                   </a>
+                                ) : (
+                                  <span className="opacity-50">Offline</span>
+                                )}
+                            </div>
+                         </div>
 
-                        <div className="space-y-6">
-                            {selectedProject.link && (
-                                <div className="space-y-2">
-                                     <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500">Links</h4>
-                                     <a 
-                                        href={selectedProject.link} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 text-primary hover:underline underline-offset-4 font-medium"
-                                     >
-                                        Visit Live Site <ExternalLink className="w-4 h-4" />
-                                     </a>
+                         {/* Client Overview */}
+                         <div>
+                            <h4 className="text-xl font-bold uppercase tracking-tight mb-4">Client Overview</h4>
+                            <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">
+                              {selectedProject.extendedDetails.clientOverview}
+                            </p>
+                         </div>
+
+                         {/* Challenge & Solution Grid */}
+                         <div className="grid md:grid-cols-2 gap-12">
+                            <div>
+                               <h4 className="text-xl font-bold uppercase tracking-tight mb-4">The Challenge</h4>
+                               <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                                 {selectedProject.extendedDetails.challenge}
+                               </p>
+                            </div>
+                            <div>
+                               <h4 className="text-xl font-bold uppercase tracking-tight mb-4">The Solution</h4>
+                               <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                                 {selectedProject.extendedDetails.solution}
+                               </p>
+                            </div>
+                         </div>
+
+                         {/* Features & Tech Stack */}
+                         <div className="grid md:grid-cols-3 gap-12 p-8 bg-neutral-50 dark:bg-neutral-800/50 rounded-xl">
+                            <div className="md:col-span-2">
+                               <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500 mb-6">Key Features</h4>
+                               <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  {selectedProject.extendedDetails.features.map((feature, idx) => (
+                                    <li key={idx} className="flex items-start gap-3 text-sm">
+                                      <CheckCircle className="w-5 h-5 text-green-500 shrink-0" />
+                                      <span>{feature}</span>
+                                    </li>
+                                  ))}
+                               </ul>
+                            </div>
+                            <div>
+                               <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500 mb-6">Tools Used</h4>
+                               <div className="flex flex-wrap gap-2">
+                                  {selectedProject.extendedDetails.techStack.map((tech, idx) => (
+                                    <span key={idx} className="px-3 py-1 bg-white dark:bg-neutral-700 rounded-full text-xs font-medium border border-neutral-200 dark:border-neutral-600">
+                                      {tech}
+                                    </span>
+                                  ))}
                                 </div>
-                            )}
-                             <div className="space-y-2">
-                                     <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500">Year</h4>
-                                     <p>{selectedProject.year}</p>
                             </div>
-                             <div className="space-y-2">
-                                     <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500">Services</h4>
-                                     <p>{selectedProject.category}</p>
-                            </div>
-                        </div>
-                    </div>
+                         </div>
+
+                         {/* Results */}
+                         <div className="border-l-4 border-current pl-6 py-2">
+                            <h4 className="text-xl font-bold uppercase tracking-tight mb-2">The Result</h4>
+                            <p className="text-lg italic text-neutral-600 dark:text-neutral-300">
+                              "{selectedProject.extendedDetails.result}"
+                            </p>
+                         </div>
+
+                         {/* Gallery */}
+                         {selectedProject.extendedDetails.images && (
+                           <div className="space-y-4">
+                             <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500">Project Gallery</h4>
+                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {selectedProject.extendedDetails.images.map((img, idx, arr) => {
+                                  // Layout Pattern: Wide (0) -> Split (1,2) -> Wide (3) -> Split (4,5)
+                                  // We use simple modulo logic.
+                                  // Standard full width indices: 0, 3, 6... (idx % 3 === 0)
+                                  
+                                  let isFullWidth = idx % 3 === 0;
+
+                                  // Edge case: If the last item is in a "split" position (e.g., idx 4),
+                                  // but there is no partner (idx 5 does not exist), make it full width to fill gap.
+                                  const isLastItem = idx === arr.length - 1;
+                                  if (isLastItem && idx % 3 === 1) {
+                                    isFullWidth = true;
+                                  }
+
+                                  return (
+                                    <div key={idx} className={`rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 ${isFullWidth ? 'md:col-span-2 aspect-[21/9]' : 'aspect-video'}`}>
+                                      <img 
+                                        src={img} 
+                                        alt="Project detail" 
+                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
+                                        onError={handleImageError}
+                                      />
+                                    </div>
+                                  )
+                                })}
+                             </div>
+                           </div>
+                         )}
+
+                      </div>
+                    ) : (
+                      /* Fallback / Standard Layout for projects without extended details */
+                      <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+                          <div className="md:col-span-2 space-y-6">
+                              <h4 className="text-xl font-bold uppercase tracking-tight">Project Overview</h4>
+                              <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">
+                                  {selectedProject.caseStudy}
+                              </p>
+                          </div>
+
+                          <div className="space-y-6">
+                              {selectedProject.link && (
+                                  <div className="space-y-2">
+                                      <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500">Links</h4>
+                                      <a 
+                                          href={selectedProject.link} 
+                                          target="_blank" 
+                                          rel="noopener noreferrer"
+                                          className="inline-flex items-center gap-2 text-primary hover:underline underline-offset-4 font-medium"
+                                      >
+                                          Visit Live Site <ExternalLink className="w-4 h-4" />
+                                      </a>
+                                  </div>
+                              )}
+                              <div className="space-y-2">
+                                      <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500">Year</h4>
+                                      <p>{selectedProject.year}</p>
+                              </div>
+                              <div className="space-y-2">
+                                      <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500">Services</h4>
+                                      <p>{selectedProject.category}</p>
+                              </div>
+                          </div>
+                      </div>
+                    )}
                 </div>
             </motion.div>
           </motion.div>
