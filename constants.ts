@@ -50,7 +50,8 @@ export const PROJECTS: Project[] = [
     category: "Shopify Design",
     year: "2024",
     imageUrl: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?q=80&w=1000&auto=format&fit=crop",
-    link: "https://exoticjeweler.com/"
+    link: "https://exoticjeweler.com/",
+    caseStudy: "For Exotic Jeweler, the goal was to create a high-converting Shopify store that reflected the luxury and exclusivity of their products. I redesigned the UX to minimize friction during checkout and implemented a dark, immersive UI that highlights the brilliance of the diamonds. The project involved custom Liquid development, 3D product integration, and speed optimization, resulting in a 40% increase in mobile conversions."
   },
   {
     id: 2,
@@ -58,6 +59,7 @@ export const PROJECTS: Project[] = [
     category: "Branding",
     year: "2024",
     imageUrl: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1000&auto=format&fit=crop",
+    caseStudy: "Maison De Coffee required a rebranding that spoke to a sophisticated, urban audience. I developed a minimalist visual identity centered around earthy tones and clean typography. The scope included logo design, packaging assets, and a style guide ensuring consistency across all physical and digital touchpoints."
   },
   {
     id: 3,
@@ -65,6 +67,7 @@ export const PROJECTS: Project[] = [
     category: "Web Design",
     year: "2023",
     imageUrl: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000&auto=format&fit=crop",
+    caseStudy: "Velvet Interiors needed a portfolio website that functioned as a digital showroom. I focused on large-scale imagery and whitespace to let the interior work breathe. The site is built on Next.js for speed, featuring smooth page transitions and a custom CMS integration allowing the client to easily update their projects."
   },
   {
     id: 4,
@@ -72,6 +75,7 @@ export const PROJECTS: Project[] = [
     category: "UI/UX",
     year: "2023",
     imageUrl: "https://images.unsplash.com/photo-1558655146-d09347e0b7a9?q=80&w=1000&auto=format&fit=crop",
+    caseStudy: "Designed the dashboard interface for TechFlow, a SaaS platform for workflow automation. The challenge was displaying complex data without overwhelming the user. I utilized a card-based layout, clear data visualization, and a comprehensive design system to ensure scalability."
   },
   {
     id: 5,
@@ -79,6 +83,7 @@ export const PROJECTS: Project[] = [
     category: "Social Media",
     year: "2023",
     imageUrl: "https://images.unsplash.com/photo-1556228720-1927525287f4?q=80&w=1000&auto=format&fit=crop",
+    caseStudy: "Managed the art direction and content creation for Aura Skincare's Instagram launch. I produced a series of motion graphics and product photography that emphasized the organic ingredients. The campaign increased engagement by 200% in the first month."
   },
   {
     id: 6,
@@ -86,6 +91,7 @@ export const PROJECTS: Project[] = [
     category: "Shopify",
     year: "2022",
     imageUrl: "https://images.unsplash.com/photo-1472851294608-41531b6563e7?q=80&w=1000&auto=format&fit=crop",
+    caseStudy: "A complete Shopify setup for a tech accessories brand. This included theme customization, app integration for reviews and upselling, and a mobile-first design approach. The clean layout helped build trust and significantly reduced cart abandonment rates."
   },
 ];
 

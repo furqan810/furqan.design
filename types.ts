@@ -16,13 +16,14 @@ export interface Project {
   id: number;
   title: string;
   category: string;
-  year: string; // Added year
+  year: string;
   imageUrl: string;
-  link?: string; // Added link for external projects
+  link?: string;
+  caseStudy: string; // New field for the document/description
 }
 
 export interface SocialLink {
   platform: string;
   url: string;
-  label: string; // Added label for text-based links
+  label: string;
 }
