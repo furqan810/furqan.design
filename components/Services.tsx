@@ -24,10 +24,19 @@ const Services: React.FC = () => {
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              whileInView={{ 
+                opacity: 1, 
+                y: 0,
+                transition: { delay: index * 0.1, duration: 0.5 }
+              }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="border-r border-b border-neutral-300 dark:border-neutral-800 p-8 flex flex-col justify-between min-h-[300px] hover:bg-white dark:hover:bg-black transition-colors duration-300"
+              whileHover={{ 
+                scale: 1.5, 
+                zIndex: 50,
+                boxShadow: "0 40px 80px -20px rgba(0, 0, 0, 0.3)",
+                transition: { duration: 0.4, type: "spring", stiffness: 300, damping: 20 }
+              }}
+              className="border-r border-b border-neutral-300 dark:border-neutral-800 p-8 flex flex-col justify-between min-h-[300px] hover:bg-white dark:hover:bg-black transition-colors duration-200 relative origin-center"
             >
               <div>
                 <span className="text-xs font-mono mb-8 block opacity-50">({service.id})</span>
