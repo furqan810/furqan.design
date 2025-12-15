@@ -9,14 +9,20 @@ const Portfolio: React.FC = () => {
   return (
     <section id="work" className="py-24 px-6 md:px-12 scroll-mt-20">
       <div className="max-w-[90rem] mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-neutral-300 dark:border-neutral-800 pb-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-neutral-300 dark:border-neutral-800 pb-8"
+        >
           <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tight">
             Selected<br />Work
           </h2>
           <p className="md:text-right mt-6 md:mt-0 max-w-sm text-neutral-500 dark:text-neutral-400">
             A collection of projects focusing on brand identity, commerce, and digital interaction.
           </p>
-        </div>
+        </motion.div>
 
         <div className="flex flex-col">
           {PROJECTS.map((project) => (
@@ -25,10 +31,10 @@ const Portfolio: React.FC = () => {
               href={project.link}
               target={project.link ? "_blank" : undefined}
               rel={project.link ? "noopener noreferrer" : undefined}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
               className="group block relative border-b border-neutral-200 dark:border-neutral-800 py-12 md:py-16 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-900/50 cursor-pointer"
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
