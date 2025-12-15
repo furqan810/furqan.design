@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { SERVICES } from '../constants';
 
 const Services: React.FC = () => {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // Tailwind lg breakpoint is 1024px. 
+      // We consider anything larger as desktop where the 1.5 scale is safe.
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    // Initial check
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <section id="services" className="py-24 px-6 md:px-12 bg-neutral-100 dark:bg-neutral-900 scroll-mt-20">
       <div className="max-w-[90rem] mx-auto">
@@ -31,9 +47,9 @@ const Services: React.FC = () => {
               }}
               viewport={{ once: true }}
               whileHover={{ 
-                scale: 1.5, 
+                scale: isDesktop ? 1.5 : 1.02, 
                 zIndex: 50,
-                boxShadow: "0 40px 80px -20px rgba(0, 0, 0, 0.3)",
+                boxShadow: isDesktop ? "0 40px 80px -20px rgba(0, 0, 0, 0.3)" : "0 10px 20px -5px rgba(0, 0, 0, 0.1)",
                 transition: { duration: 0.4, type: "spring", stiffness: 300, damping: 20 }
               }}
               className="border-r border-b border-neutral-300 dark:border-neutral-800 p-8 flex flex-col justify-between min-h-[300px] hover:bg-white dark:hover:bg-black transition-colors duration-200 relative origin-center"
