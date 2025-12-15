@@ -13,6 +13,7 @@ declare global {
       directionalLight: any;
       pointLight: any;
       icosahedronGeometry: any;
+      [elemName: string]: any;
     }
   }
 }

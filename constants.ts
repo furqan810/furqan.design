@@ -4,7 +4,7 @@ export const USER_DATA = {
   name: "Furqan Nazir",
   role: "Graphic & Web Designer",
   location: "Based in Barcelona, Spain",
-  email: "work.furqannazir@gamil.com",
+  email: "work.furqannazir@gmail.com",
   whatsapp: "+34637635459",
   copyrightYear: new Date().getFullYear(),
 };
@@ -100,6 +100,11 @@ export const SOCIAL_LINKS: SocialLink[] = [
     platform: "Instagram",
     url: "https://www.instagram.com/furqannazir.me/",
     label: "Instagram"
+  },
+  {
+    platform: "Behance",
+    url: "https://www.behance.net/furqannazir",
+    label: "Behance"
   },
   {
     platform: "Facebook",

@@ -19,14 +19,27 @@ const Contact: React.FC = () => {
             <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-12">
               Let's start<br />a project
             </h2>
-             <motion.a 
-              href={`mailto:${USER_DATA.email}`}
-              whileHover={{ x: 10 }}
-              className="inline-flex items-center gap-4 text-xl md:text-2xl hover:opacity-60 transition-opacity border-b border-current pb-1"
-            >
-              {USER_DATA.email}
-              <ArrowUpRight className="w-6 h-6" />
-            </motion.a>
+             <div className="flex flex-col items-start gap-4">
+               <motion.a 
+                href={`mailto:${USER_DATA.email}`}
+                whileHover={{ x: 10 }}
+                className="inline-flex items-center gap-4 text-xl md:text-2xl hover:opacity-60 transition-opacity border-b border-current pb-1"
+              >
+                {USER_DATA.email}
+                <ArrowUpRight className="w-6 h-6" />
+              </motion.a>
+
+              <motion.a 
+                href={`https://wa.me/${USER_DATA.whatsapp.replace(/\+/g, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ x: 10 }}
+                className="inline-flex items-center gap-4 text-xl md:text-2xl hover:opacity-60 transition-opacity border-b border-current pb-1"
+              >
+                {USER_DATA.whatsapp}
+                <ArrowUpRight className="w-6 h-6" />
+              </motion.a>
+             </div>
           </motion.div>
 
           <motion.div 
@@ -48,6 +61,8 @@ const Contact: React.FC = () => {
                       <a 
                         key={link.platform} 
                         href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-lg hover:underline underline-offset-4"
                       >
                         {link.label}
