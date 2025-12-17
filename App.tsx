@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
+import CustomCursor from './components/CustomCursor';
 
 const App: React.FC = () => {
   // Initialize to dark mode by default for Keya Vadgama aesthetic
@@ -27,7 +28,8 @@ const App: React.FC = () => {
   const toggleTheme = () => setIsDark(!isDark);
 
   return (
-    <div className="bg-background text-foreground min-h-screen transition-colors duration-500 selection:bg-foreground selection:text-background">
+    <div className="bg-background text-foreground min-h-screen transition-colors duration-500 selection:bg-foreground selection:text-background md:cursor-none">
+      <CustomCursor />
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       
       <main>
