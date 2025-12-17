@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Sun, Moon } from 'lucide-react';
 import { NAV_ITEMS, USER_DATA } from '../constants';
 
 interface NavbarProps {
@@ -72,9 +73,11 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
             ))}
             <button 
               onClick={toggleTheme}
-              className="w-4 h-4 rounded-full border border-current hover:bg-current transition-colors"
+              className="p-2 -mr-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
               aria-label="Toggle Theme"
-            />
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -110,9 +113,17 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, toggleTheme }) => {
               ))}
                <button 
                 onClick={() => { toggleTheme(); setIsMenuOpen(false); }}
-                className="mt-8 text-sm uppercase tracking-widest border-b border-current pb-1"
+                className="mt-8 flex items-center gap-2 text-sm uppercase tracking-widest border-b border-current pb-1"
               >
-                {isDark ? 'Light Mode' : 'Dark Mode'}
+                 {isDark ? (
+                    <>
+                        <Sun className="w-4 h-4" /> Light Mode
+                    </>
+                ) : (
+                    <>
+                        <Moon className="w-4 h-4" /> Dark Mode
+                    </>
+                )}
               </button>
             </div>
           </motion.div>
