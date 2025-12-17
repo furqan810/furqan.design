@@ -1,8 +1,9 @@
+
 import { NavItem, Service, Project, SocialLink } from './types';
 
 export const USER_DATA = {
   name: "Furqan Nazir",
-  role: "Graphic & Web Designer",
+  role: "Graphic & E-commerce Expert",
   location: "Based in Barcelona, Spain",
   email: "work.furqannazir@gmail.com",
   whatsapp: "+34637635459",
@@ -20,20 +21,20 @@ export const SERVICES: Service[] = [
   {
     id: "01",
     title: "Design & Branding",
-    description: "Captivating visuals that tell your brand story.",
+    description: "Captivating visuals that tell your brand story and grab attention.",
     tags: ["Logo Design", "Web Banners", "Social Media Kits", "Flyers & Posters"]
   },
   {
     id: "02",
     title: "Shopify Development",
-    description: "High-converting stores built from the ground up.",
+    description: "High-converting stores built from the ground up to drive sales.",
     tags: ["Complete Store Setup", "Theme Customization", "App Integration", "Speed Optimization"]
   },
   {
     id: "03",
     title: "E-commerce Management",
-    description: "Strategic growth and day-to-day operations.",
-    tags: ["Product Research", "Dropshipping Strategy", "Multi-channel Listing", "Inventory Management"]
+    description: "Strategic growth and professional management of Amazon and eBay stores.",
+    tags: ["Amazon/eBay Management", "Product Research", "Dropshipping Strategy", "Multi-channel Listing"]
   },
 ];
 
@@ -43,30 +44,28 @@ export const PROJECTS: Project[] = [
     title: "Exotic Jeweler",
     category: "Shopify Design",
     year: "2024",
-    // Hero Image (Direct Imgur Link)
     imageUrl: "https://i.imgur.com/X7AW3Hw.png", 
     link: "https://exoticjeweler.com/",
     caseStudy: "A high-converting Shopify store redesign focusing on luxury and exclusivity.",
     extendedDetails: {
       role: "Shopify Designer & Developer",
       platform: "Shopify",
-      clientOverview: "Exotic Jeweler is a boutique jewelry brand specializing in rare gemstones and bespoke engagement rings. The brand is defined by its commitment to exclusivity, craftsmanship, and providing a luxury experience that rivals visiting a physical showroom.",
-      challenge: "The client needed a digital storefront that could translate the tactile and emotional experience of buying fine jewelry into an online format. Challenges included overcoming the hesitation customers feel when buying high-value items online, accurately showcasing the sparkle and scale of intricate pieces, and creating a seamless path to purchase for both impulsive buyers and those requiring consultation.",
-      solution: "I designed and developed a custom Shopify experience that prioritizes visual storytelling and brand immersion. By utilizing a minimalist UI, the design allows the products to take center stage. The design philosophy was 'Luxury through Simplicity'—using plenty of whitespace, elegant typography, and high-quality imagery to evoke sophistication.",
+      clientOverview: "Exotic Jeweler is a boutique jewelry brand specializing in rare gemstones and bespoke engagement rings.",
+      challenge: "The client needed a digital storefront that could translate the tactile and emotional experience of buying fine jewelry into an online format.",
+      solution: "I designed and developed a custom Shopify experience that prioritizes visual storytelling and brand immersion.",
       features: [
-        "Immersive Product Pages with deep-zoom & video integration",
-        "Advanced Filtering & Search by metal, cut, and price",
-        "Mobile-First Design optimized for smartphone conversions",
-        "Trust Signals integration (Certifications, Secure Checkout, Reviews)",
-        "Seamless Mega Menu navigation"
+        "Immersive Product Pages",
+        "Advanced Filtering & Search",
+        "Mobile-First Design",
+        "Secure Checkout Integration"
       ],
-      techStack: ["Shopify (OS 2.0)", "HTML5/CSS3", "Liquid", "JavaScript", "Figma"],
-      result: "The new Exotic Jeweler website delivers a premium digital experience that reflects the quality of the physical product. The site is optimized for both speed and conversion, resulting in a 40% increase in mobile conversions and providing a solid foundation for the brand's digital growth.",
+      techStack: ["Shopify (OS 2.0)", "Liquid", "JavaScript", "Figma"],
+      result: "Mobile conversions increased by 40% in the first quarter post-launch.",
       images: [
-        "https://i.imgur.com/6kt9RKk.png", // Featured Product
-        "https://i.imgur.com/IbxhWib.png", // Staff Pick
-        "https://i.imgur.com/PSMBasj.png", // Men's Collection
-        "https://i.imgur.com/11tf2td.png"  // Ring Detail
+        "https://i.imgur.com/6kt9RKk.png",
+        "https://i.imgur.com/IbxhWib.png",
+        "https://i.imgur.com/PSMBasj.png",
+        "https://i.imgur.com/11tf2td.png"
       ]
     }
   },
@@ -76,39 +75,15 @@ export const PROJECTS: Project[] = [
     category: "Branding",
     year: "2024",
     imageUrl: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1000&auto=format&fit=crop",
-    caseStudy: "Maison De Coffee required a rebranding that spoke to a sophisticated, urban audience. I developed a minimalist visual identity centered around earthy tones and clean typography. The scope included logo design, packaging assets, and a style guide ensuring consistency across all physical and digital touchpoints."
+    caseStudy: "Comprehensive branding for a premium coffee house, including logo design and social media identity."
   },
   {
     id: 3,
-    title: "Velvet Interiors",
-    category: "Web Design",
+    title: "E-com Multi-Store",
+    category: "Store Management",
     year: "2023",
-    imageUrl: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000&auto=format&fit=crop",
-    caseStudy: "Velvet Interiors needed a portfolio website that functioned as a digital showroom. I focused on large-scale imagery and whitespace to let the interior work breathe. The site is built on Next.js for speed, featuring smooth page transitions and a custom CMS integration allowing the client to easily update their projects."
-  },
-  {
-    id: 4,
-    title: "TechFlow SaaS",
-    category: "UI/UX",
-    year: "2023",
-    imageUrl: "https://images.unsplash.com/photo-1558655146-d09347e0b7a9?q=80&w=1000&auto=format&fit=crop",
-    caseStudy: "Designed the dashboard interface for TechFlow, a SaaS platform for workflow automation. The challenge was displaying complex data without overwhelming the user. I utilized a card-based layout, clear data visualization, and a comprehensive design system to ensure scalability."
-  },
-  {
-    id: 5,
-    title: "Aura Skincare",
-    category: "Social Media",
-    year: "2023",
-    imageUrl: "https://images.unsplash.com/photo-1556228720-1927525287f4?q=80&w=1000&auto=format&fit=crop",
-    caseStudy: "Managed the art direction and content creation for Aura Skincare's Instagram launch. I produced a series of motion graphics and product photography that emphasized the organic ingredients. The campaign increased engagement by 200% in the first month."
-  },
-  {
-    id: 6,
-    title: "Nexus Shop",
-    category: "Shopify",
-    year: "2022",
-    imageUrl: "https://images.unsplash.com/photo-1472851294608-41531b6563e7?q=80&w=1000&auto=format&fit=crop",
-    caseStudy: "A complete Shopify setup for a tech accessories brand. This included theme customization, app integration for reviews and upselling, and a mobile-first design approach. The clean layout helped build trust and significantly reduced cart abandonment rates."
+    imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000&auto=format&fit=crop",
+    caseStudy: "Full-scale management of Amazon and eBay stores for a tech accessory retailer, optimizing product listings and inventory."
   },
 ];
 

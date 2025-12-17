@@ -8,13 +8,10 @@ const Services: React.FC = () => {
   useEffect(() => {
     const handleResize = () => {
       // Tailwind lg breakpoint is 1024px. 
-      // We consider anything larger as desktop where the 1.5 scale is safe.
       setIsDesktop(window.innerWidth >= 1024);
     };
 
-    // Initial check
     handleResize();
-
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);

@@ -45,10 +45,21 @@
         background-color: var(--background);
         color: var(--foreground);
         transition: background-color 0.5s cubic-bezier(0.19, 1, 0.22, 1), color 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        overflow-x: hidden;
       }
       ::selection {
         background: var(--foreground);
         color: var(--background);
+      }
+      /* Custom utility for outlined text */
+      .text-outline {
+        -webkit-text-stroke: 1.5px currentColor;
+        color: transparent;
+      }
+      @media (max-width: 768px) {
+        .text-outline {
+          -webkit-text-stroke: 1px currentColor;
+        }
       }
     </style>
   <script type="importmap">

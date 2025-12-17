@@ -8,7 +8,6 @@ const Portfolio: React.FC = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  // Lock body scroll when modal is open
   useEffect(() => {
     if (selectedProject) {
       document.body.style.overflow = 'hidden';
@@ -21,8 +20,7 @@ const Portfolio: React.FC = () => {
   }, [selectedProject]);
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.onerror = null; // Prevent infinite loop
-    // Set a subtle, abstract fallback image
+    e.currentTarget.onerror = null;
     e.currentTarget.src = "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000&auto=format&fit=crop";
   };
 
@@ -36,11 +34,13 @@ const Portfolio: React.FC = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-neutral-300 dark:border-neutral-800 pb-8"
         >
-          <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tight">
-            Selected<br />Work
-          </h2>
-          <p className="md:text-right mt-6 md:mt-0 max-w-sm text-neutral-500 dark:text-neutral-400">
-            A collection of projects focusing on brand identity, commerce, and digital interaction.
+          <div className="text-left">
+            <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tight">
+              Selected<br />Work
+            </h2>
+          </div>
+          <p className="text-left md:text-right mt-6 md:mt-0 max-w-sm text-neutral-500 dark:text-neutral-400">
+            Showcasing a mix of specialized graphic design and comprehensive e-commerce stores.
           </p>
         </motion.div>
 
@@ -67,13 +67,11 @@ const Portfolio: React.FC = () => {
                   <span className="w-32">{project.category}</span>
                   <span>{project.year}</span>
                   <div className="w-10 h-10 flex items-center justify-center rounded-full border border-neutral-300 dark:border-neutral-700 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
-                     <span className="sr-only">View Case Study</span>
                      <ArrowUpRight className="w-5 h-5" />
                   </div>
                 </div>
               </div>
               
-              {/* Floating Image on Hover */}
               <AnimatePresence>
                 {hoveredProject === project.id && (
                     <motion.div
@@ -97,7 +95,6 @@ const Portfolio: React.FC = () => {
         </div>
       </div>
 
-      {/* Case Study Modal */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -106,52 +103,32 @@ const Portfolio: React.FC = () => {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
           >
-            {/* Backdrop */}
-            <div 
-                className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
-                onClick={() => setSelectedProject(null)}
-            />
-
-            {/* Modal Content */}
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedProject(null)} />
             <motion.div 
                 layoutId={`project-container-${selectedProject.id}`}
                 className="w-full max-w-5xl max-h-[90vh] bg-white dark:bg-neutral-900 rounded-xl overflow-hidden shadow-2xl relative flex flex-col z-[110]"
             >
-                {/* Header */}
                 <div className="p-6 md:p-8 flex justify-between items-start border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 sticky top-0 z-20">
                     <div>
-                        <h3 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-2">
-                            {selectedProject.title}
-                        </h3>
+                        <h3 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-2">{selectedProject.title}</h3>
                         <div className="flex gap-4 text-sm uppercase tracking-widest text-neutral-500">
                             <span>{selectedProject.category}</span>
                             <span>•</span>
                             <span>{selectedProject.year}</span>
                         </div>
                     </div>
-                    <button 
-                        onClick={() => setSelectedProject(null)}
-                        className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-                    >
+                    <button onClick={() => setSelectedProject(null)} className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
                         <X className="w-6 h-6" />
                     </button>
                 </div>
 
-                {/* Scrollable Body */}
                 <div className="overflow-y-auto p-6 md:p-8">
                     <div className="w-full aspect-video rounded-lg overflow-hidden mb-8 bg-neutral-100 dark:bg-neutral-800">
-                        <img 
-                            src={selectedProject.imageUrl} 
-                            alt={selectedProject.title} 
-                            className="w-full h-full object-cover"
-                            onError={handleImageError}
-                        />
+                        <img src={selectedProject.imageUrl} alt={selectedProject.title} className="w-full h-full object-cover" onError={handleImageError} />
                     </div>
 
                     {selectedProject.extendedDetails ? (
-                      /* Rich Content Layout */
                       <div className="space-y-12">
-                         {/* Meta Data Grid */}
                          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-8 border-b border-neutral-200 dark:border-neutral-800">
                             <div>
                                 <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-2">Role</h4>
@@ -165,130 +142,37 @@ const Portfolio: React.FC = () => {
                                 <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-2">Website</h4>
                                 {selectedProject.link ? (
                                    <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline">
-                                     Visit Live Site <ExternalLink className="w-3 h-3" />
+                                     Visit Live <ExternalLink className="w-3 h-3" />
                                    </a>
-                                ) : (
-                                  <span className="opacity-50">Offline</span>
-                                )}
+                                ) : <span className="opacity-50">Private</span>}
                             </div>
                          </div>
-
-                         {/* Client Overview */}
                          <div>
-                            <h4 className="text-xl font-bold uppercase tracking-tight mb-4">Client Overview</h4>
-                            <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">
-                              {selectedProject.extendedDetails.clientOverview}
-                            </p>
+                            <h4 className="text-xl font-bold uppercase tracking-tight mb-4">Overview</h4>
+                            <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">{selectedProject.extendedDetails.clientOverview}</p>
                          </div>
-
-                         {/* Challenge & Solution Grid */}
                          <div className="grid md:grid-cols-2 gap-12">
                             <div>
                                <h4 className="text-xl font-bold uppercase tracking-tight mb-4">The Challenge</h4>
-                               <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed">
-                                 {selectedProject.extendedDetails.challenge}
-                               </p>
+                               <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed">{selectedProject.extendedDetails.challenge}</p>
                             </div>
                             <div>
                                <h4 className="text-xl font-bold uppercase tracking-tight mb-4">The Solution</h4>
-                               <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed">
-                                 {selectedProject.extendedDetails.solution}
-                               </p>
+                               <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed">{selectedProject.extendedDetails.solution}</p>
                             </div>
                          </div>
-
-                         {/* Features & Tech Stack */}
-                         <div className="grid md:grid-cols-3 gap-12 p-8 bg-neutral-50 dark:bg-neutral-800/50 rounded-xl">
-                            <div className="md:col-span-2">
-                               <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500 mb-6">Key Features</h4>
-                               <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                  {selectedProject.extendedDetails.features.map((feature, idx) => (
-                                    <li key={idx} className="flex items-start gap-3 text-sm">
-                                      <CheckCircle className="w-5 h-5 text-green-500 shrink-0" />
-                                      <span>{feature}</span>
-                                    </li>
-                                  ))}
-                               </ul>
-                            </div>
-                            <div>
-                               <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500 mb-6">Tools Used</h4>
-                               <div className="flex flex-wrap gap-2">
-                                  {selectedProject.extendedDetails.techStack.map((tech, idx) => (
-                                    <span key={idx} className="px-3 py-1 bg-white dark:bg-neutral-700 rounded-full text-xs font-medium border border-neutral-200 dark:border-neutral-600">
-                                      {tech}
-                                    </span>
-                                  ))}
-                                </div>
-                            </div>
-                         </div>
-
-                         {/* Results */}
                          <div className="border-l-4 border-current pl-6 py-2">
-                            <h4 className="text-xl font-bold uppercase tracking-tight mb-2">The Result</h4>
-                            <p className="text-lg italic text-neutral-600 dark:text-neutral-300">
-                              "{selectedProject.extendedDetails.result}"
-                            </p>
+                            <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Result</h4>
+                            <p className="text-lg italic text-neutral-600 dark:text-neutral-300">"{selectedProject.extendedDetails.result}"</p>
                          </div>
-
-                         {/* Gallery */}
-                         {selectedProject.extendedDetails.images && (
-                           <div className="space-y-4">
-                             <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500">Project Gallery</h4>
-                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {selectedProject.extendedDetails.images.map((img, idx, arr) => {
-                                  // Layout Pattern: Wide (0) -> Split (1,2) -> Wide (3) -> Split (4,5)
-                                  // We use simple modulo logic.
-                                  // Standard full width indices: 0, 3, 6... (idx % 3 === 0)
-                                  
-                                  let isFullWidth = idx % 3 === 0;
-
-                                  // Edge case: If the last item is in a "split" position (e.g., idx 4),
-                                  // but there is no partner (idx 5 does not exist), make it full width to fill gap.
-                                  const isLastItem = idx === arr.length - 1;
-                                  if (isLastItem && idx % 3 === 1) {
-                                    isFullWidth = true;
-                                  }
-
-                                  return (
-                                    <div key={idx} className={`rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 ${isFullWidth ? 'md:col-span-2 aspect-[21/9]' : 'aspect-video'}`}>
-                                      <img 
-                                        src={img} 
-                                        alt="Project detail" 
-                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
-                                        onError={handleImageError}
-                                      />
-                                    </div>
-                                  )
-                                })}
-                             </div>
-                           </div>
-                         )}
-
                       </div>
                     ) : (
-                      /* Fallback / Standard Layout for projects without extended details */
                       <div className="grid md:grid-cols-3 gap-8 md:gap-12">
                           <div className="md:col-span-2 space-y-6">
-                              <h4 className="text-xl font-bold uppercase tracking-tight">Project Overview</h4>
-                              <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">
-                                  {selectedProject.caseStudy}
-                              </p>
+                              <h4 className="text-xl font-bold uppercase tracking-tight">Overview</h4>
+                              <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">{selectedProject.caseStudy}</p>
                           </div>
-
                           <div className="space-y-6">
-                              {selectedProject.link && (
-                                  <div className="space-y-2">
-                                      <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500">Links</h4>
-                                      <a 
-                                          href={selectedProject.link} 
-                                          target="_blank" 
-                                          rel="noopener noreferrer"
-                                          className="inline-flex items-center gap-2 text-primary hover:underline underline-offset-4 font-medium"
-                                      >
-                                          Visit Live Site <ExternalLink className="w-4 h-4" />
-                                      </a>
-                                  </div>
-                              )}
                               <div className="space-y-2">
                                       <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500">Year</h4>
                                       <p>{selectedProject.year}</p>
