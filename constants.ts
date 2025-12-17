@@ -19,27 +19,21 @@ export const NAV_ITEMS: NavItem[] = [
 export const SERVICES: Service[] = [
   {
     id: "01",
-    title: "Brand Identity",
-    description: "Creating distinct visual systems that define brands.",
-    tags: ["Logo Design", "Visual Language", "Brand Guidelines"]
+    title: "Design & Branding",
+    description: "Captivating visuals that tell your brand story.",
+    tags: ["Logo Design", "Web Banners", "Social Media Kits", "Flyers & Posters"]
   },
   {
     id: "02",
-    title: "Digital Design",
-    description: "Crafting intuitive and impactful digital experiences.",
-    tags: ["Web Design", "UI/UX", "Landing Pages"]
+    title: "Shopify Development",
+    description: "High-converting stores built from the ground up.",
+    tags: ["Complete Store Setup", "Theme Customization", "App Integration", "Speed Optimization"]
   },
   {
     id: "03",
-    title: "E-Commerce",
-    description: "Building robust online stores that convert.",
-    tags: ["Shopify", "WooCommerce", "Store Setup"]
-  },
-  {
-    id: "04",
-    title: "Content Creation",
-    description: "Visual assets tailored for social growth.",
-    tags: ["Social Media", "Art Direction", "Motion"]
+    title: "E-commerce Management",
+    description: "Strategic growth and day-to-day operations.",
+    tags: ["Product Research", "Dropshipping Strategy", "Multi-channel Listing", "Inventory Management"]
   },
 ];
 

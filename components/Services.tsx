@@ -29,13 +29,16 @@ const Services: React.FC = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-20"
         >
-           <span className="uppercase tracking-widest text-sm font-medium mb-4 block">Capabilities</span>
-           <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight max-w-3xl">
-            We build digital products from concept to launch.
+           <span className="uppercase tracking-widest text-sm font-medium mb-4 block">Services</span>
+           <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight max-w-4xl">
+            Comprehensive solutions for your e-commerce journey.
            </h2>
+           <p className="mt-6 text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl">
+            From the first pixel to the first sale, I've got you covered.
+           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-l border-neutral-300 dark:border-neutral-800">
+        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-neutral-300 dark:border-neutral-800">
           {SERVICES.map((service, index) => (
             <motion.div
               key={service.id}
@@ -47,26 +50,31 @@ const Services: React.FC = () => {
               }}
               viewport={{ once: true }}
               whileHover={{ 
-                scale: isDesktop ? 1.5 : 1.02, 
+                scale: isDesktop ? 1.05 : 1.02, 
                 zIndex: 50,
                 boxShadow: isDesktop ? "0 40px 80px -20px rgba(0, 0, 0, 0.3)" : "0 10px 20px -5px rgba(0, 0, 0, 0.1)",
                 transition: { duration: 0.4, type: "spring", stiffness: 300, damping: 20 }
               }}
-              className="border-r border-b border-neutral-300 dark:border-neutral-800 p-8 flex flex-col justify-between min-h-[300px] hover:bg-white dark:hover:bg-black transition-colors duration-200 relative origin-center"
+              className="border-r border-b border-neutral-300 dark:border-neutral-800 p-8 flex flex-col min-h-[400px] hover:bg-white dark:hover:bg-black transition-colors duration-200 relative origin-center"
             >
               <div>
                 <span className="text-xs font-mono mb-8 block opacity-50">({service.id})</span>
                 <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm mb-6">
+                <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm">
                   {service.description}
                 </p>
               </div>
               
-              <ul className="space-y-1">
-                {service.tags.map(tag => (
-                   <li key={tag} className="text-xs uppercase tracking-wider opacity-60">• {tag}</li>
-                ))}
-              </ul>
+              <div className="mt-8">
+                <ul className="space-y-3">
+                    {service.tags.map(tag => (
+                    <li key={tag} className="text-xs font-medium uppercase tracking-wider opacity-80 flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-current rounded-full"></span>
+                        {tag}
+                    </li>
+                    ))}
+                </ul>
+              </div>
             </motion.div>
           ))}
         </div>
