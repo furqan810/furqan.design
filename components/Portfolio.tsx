@@ -34,7 +34,7 @@ const Portfolio: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-neutral-300 dark:border-neutral-800 pb-8"
+          className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-neutral-300 dark:border-neutral-800 pb-8"
         >
           <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tight">
             Selected<br />Work
