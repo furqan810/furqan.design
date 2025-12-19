@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS } from '../constants';
-import { ArrowUpRight, X, ExternalLink, CheckCircle } from 'lucide-react';
+import { ArrowUpRight, X, ExternalLink } from 'lucide-react';
 import { Project } from '../types';
 
 const Portfolio: React.FC = () => {
@@ -123,6 +124,7 @@ const Portfolio: React.FC = () => {
                 </div>
 
                 <div className="overflow-y-auto p-6 md:p-8">
+                    {/* Main Image */}
                     <div className="w-full aspect-video rounded-lg overflow-hidden mb-8 bg-neutral-100 dark:bg-neutral-800">
                         <img src={selectedProject.imageUrl} alt={selectedProject.title} className="w-full h-full object-cover" onError={handleImageError} />
                     </div>
@@ -144,13 +146,31 @@ const Portfolio: React.FC = () => {
                                    <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline">
                                      Visit Live <ExternalLink className="w-3 h-3" />
                                    </a>
-                                ) : <span className="opacity-50">Private</span>}
+                                ) : <span className="opacity-50">Private / Case Study</span>}
                             </div>
                          </div>
+                         
                          <div>
                             <h4 className="text-xl font-bold uppercase tracking-tight mb-4">Overview</h4>
                             <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">{selectedProject.extendedDetails.clientOverview}</p>
                          </div>
+
+                         {/* Case Study Gallery / Comparison */}
+                         {selectedProject.extendedDetails.images.length > 0 && (
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                {selectedProject.extendedDetails.images.map((img, idx) => (
+                                    <div key={idx} className="space-y-4">
+                                        <div className="rounded-lg overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-800">
+                                            <img src={img} alt={`${selectedProject.title} screenshot ${idx + 1}`} className="w-full h-auto" onError={handleImageError} />
+                                        </div>
+                                        <span className="text-xs uppercase tracking-widest opacity-50 block text-center">
+                                            {idx === 0 ? "The Result (After)" : "The Concept (Before)"}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                         )}
+
                          <div className="grid md:grid-cols-2 gap-12">
                             <div>
                                <h4 className="text-xl font-bold uppercase tracking-tight mb-4">The Challenge</h4>

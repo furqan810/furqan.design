@@ -1,4 +1,3 @@
-
 import { NavItem, Service, Project, SocialLink } from './types';
 
 export const USER_DATA = {
@@ -40,10 +39,37 @@ export const SERVICES: Service[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: 4,
+    title: "Bhojan Byte",
+    category: "Logo Design",
+    year: "2025",
+    imageUrl: "https://i.imgur.com/ciyhdVb.png", // After image as main cover
+    caseStudy: "Pivoting a food-tech startup's brand identity from a 'generic restaurant' look to a sophisticated SaaS and technology consulting powerhouse.",
+    extendedDetails: {
+      role: "Brand Identity Designer",
+      platform: "Branding & SaaS Strategy",
+      clientOverview: "Bhojan Byte is a technology consulting firm providing digital infrastructure for the food industry, offering online ordering platforms, POS systems, and operational tools.",
+      challenge: "The initial design (seen in 'Before') felt too much like a consumer-facing restaurant. The client needed to communicate their core identity as a software provider, moving away from a 'food outlet' look to a 'SaaS and Innovation' feel.",
+      solution: "I pivoted the identity toward Structured Geometry. The new logo (seen in 'After') reimagines the primary icon as an isometric 'Data Stack' representing server infrastructure. I shifted to a Deep Navy and Slate Blue palette to evoke professional trust and security.",
+      features: [
+        "Geometric Visual Identity",
+        "B2B Brand Positioning",
+        "Custom Iconography",
+        "Corporate Color Strategy"
+      ],
+      techStack: ["Adobe Illustrator", "Figma", "Brand Strategy", "SaaS Visual Language"],
+      result: "A high-end identity that successfully communicates innovation and efficiency, positioning the brand as a leader in food-sector digital transformation.",
+      images: [
+        "https://i.imgur.com/ciyhdVb.png", // Final Result (After)
+        "https://i.imgur.com/tbEzdMW.png"  // Initial Concept (Before)
+      ]
+    }
+  },
+  {
     id: 1,
     title: "Exotic Jeweler",
     category: "Shopify Design",
-    year: "2024",
+    year: "2025",
     imageUrl: "https://i.imgur.com/X7AW3Hw.png", 
     link: "https://exoticjeweler.com/",
     caseStudy: "A high-converting Shopify store redesign focusing on luxury and exclusivity.",
