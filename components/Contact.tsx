@@ -56,14 +56,14 @@ const Contact: React.FC = () => {
              
              <div className="space-y-2">
                 <span className="text-xs uppercase tracking-widest opacity-50">Socials</span>
-                <div className="flex lg:justify-end gap-6">
+                <div className="flex flex-wrap lg:justify-end items-center gap-6">
                    {SOCIAL_LINKS.map(link => (
                       <a 
                         key={link.platform} 
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-lg hover:underline underline-offset-4"
+                        className="text-lg hover:underline underline-offset-4 transition-all"
                       >
                         {link.label}
                       </a>

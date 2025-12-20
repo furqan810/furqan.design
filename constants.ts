@@ -115,6 +115,11 @@ export const PROJECTS: Project[] = [
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
+    platform: "LinkedIn",
+    url: "https://www.linkedin.com/in/furqanme/",
+    label: "LinkedIn"
+  },
+  {
     platform: "Instagram",
     url: "https://www.instagram.com/furqannazir.me/",
     label: "Instagram"
