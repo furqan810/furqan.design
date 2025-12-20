@@ -130,6 +130,11 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: "Behance"
   },
   {
+    platform: "Fiverr",
+    url: "https://www.fiverr.com/s/xXxYmgX",
+    label: "Fiverr"
+  },
+  {
     platform: "Facebook",
     url: "https://www.facebook.com/furqannazir.me",
     label: "Facebook"
