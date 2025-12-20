@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS } from '../constants';
@@ -107,7 +106,7 @@ const Portfolio: React.FC = () => {
             <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedProject(null)} />
             <motion.div 
                 layoutId={`project-container-${selectedProject.id}`}
-                className="w-full max-w-5xl max-h-[90vh] bg-white dark:bg-neutral-900 rounded-xl overflow-hidden shadow-2xl relative flex flex-col z-[110]"
+                className="w-full max-w-5xl max-h-[95vh] bg-white dark:bg-neutral-900 rounded-xl overflow-hidden shadow-2xl relative flex flex-col z-[110]"
             >
                 <div className="p-6 md:p-8 flex justify-between items-start border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 sticky top-0 z-20">
                     <div>
@@ -123,10 +122,19 @@ const Portfolio: React.FC = () => {
                     </button>
                 </div>
 
-                <div className="overflow-y-auto p-6 md:p-8">
-                    {/* Main Image */}
-                    <div className="w-full aspect-video rounded-lg overflow-hidden mb-8 bg-neutral-100 dark:bg-neutral-800">
-                        <img src={selectedProject.imageUrl} alt={selectedProject.title} className="w-full h-full object-cover" onError={handleImageError} />
+                <div className="overflow-y-auto p-6 md:p-8 custom-scrollbar">
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                        {selectedProject.extendedDetails?.images.map((img, idx) => (
+                           <div key={idx} className="space-y-4">
+                              <div className="aspect-video rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-800 shadow-lg">
+                                 <img src={img} alt={`${selectedProject.title} ${idx}`} className="w-full h-full object-cover" onError={handleImageError} />
+                              </div>
+                              <span className="text-xs uppercase tracking-widest opacity-50 block text-center">
+                                 {idx === 0 ? "Final Result" : "Concept Iteration"}
+                              </span>
+                           </div>
+                        ))}
                     </div>
 
                     {selectedProject.extendedDetails ? (
@@ -141,12 +149,8 @@ const Portfolio: React.FC = () => {
                                 <p className="font-medium">{selectedProject.extendedDetails.platform}</p>
                             </div>
                              <div>
-                                <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-2">Website</h4>
-                                {selectedProject.link ? (
-                                   <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline">
-                                     Visit Live <ExternalLink className="w-3 h-3" />
-                                   </a>
-                                ) : <span className="opacity-50">Private / Case Study</span>}
+                                <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-2">Project Type</h4>
+                                <p className="font-medium">{selectedProject.category}</p>
                             </div>
                          </div>
                          
@@ -154,22 +158,6 @@ const Portfolio: React.FC = () => {
                             <h4 className="text-xl font-bold uppercase tracking-tight mb-4">Overview</h4>
                             <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">{selectedProject.extendedDetails.clientOverview}</p>
                          </div>
-
-                         {/* Case Study Gallery / Comparison */}
-                         {selectedProject.extendedDetails.images.length > 0 && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                {selectedProject.extendedDetails.images.map((img, idx) => (
-                                    <div key={idx} className="space-y-4">
-                                        <div className="rounded-lg overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-800">
-                                            <img src={img} alt={`${selectedProject.title} screenshot ${idx + 1}`} className="w-full h-auto" onError={handleImageError} />
-                                        </div>
-                                        <span className="text-xs uppercase tracking-widest opacity-50 block text-center">
-                                            {idx === 0 ? "The Result (After)" : "The Concept (Before)"}
-                                        </span>
-                                    </div>
-                                ))}
-                            </div>
-                         )}
 
                          <div className="grid md:grid-cols-2 gap-12">
                             <div>
@@ -182,8 +170,8 @@ const Portfolio: React.FC = () => {
                             </div>
                          </div>
                          <div className="border-l-4 border-current pl-6 py-2">
-                            <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Result</h4>
-                            <p className="text-lg italic text-neutral-600 dark:text-neutral-300">"{selectedProject.extendedDetails.result}"</p>
+                            <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Outcome</h4>
+                            <p className="text-lg italic text-neutral-600 dark:text-neutral-300">{selectedProject.extendedDetails.result}</p>
                          </div>
                       </div>
                     ) : (
@@ -192,16 +180,19 @@ const Portfolio: React.FC = () => {
                               <h4 className="text-xl font-bold uppercase tracking-tight">Overview</h4>
                               <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">{selectedProject.caseStudy}</p>
                           </div>
-                          <div className="space-y-6">
-                              <div className="space-y-2">
-                                      <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500">Year</h4>
-                                      <p>{selectedProject.year}</p>
-                              </div>
-                              <div className="space-y-2">
-                                      <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500">Services</h4>
-                                      <p>{selectedProject.category}</p>
-                              </div>
-                          </div>
+                      </div>
+                    )}
+
+                    {selectedProject.link && (
+                      <div className="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-800">
+                         <a 
+                           href={selectedProject.link} 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           className="inline-flex items-center gap-2 text-xl font-bold uppercase tracking-tight border-b-2 border-current pb-1 hover:opacity-60 transition-opacity"
+                         >
+                           Visit Live Project <ArrowUpRight className="w-5 h-5" />
+                         </a>
                       </div>
                     )}
                 </div>

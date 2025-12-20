@@ -43,25 +43,25 @@ export const PROJECTS: Project[] = [
     title: "Bhojan Byte",
     category: "Logo Design",
     year: "2025",
-    imageUrl: "https://i.imgur.com/ciyhdVb.png", // After image as main cover
-    caseStudy: "Pivoting a food-tech startup's brand identity from a 'generic restaurant' look to a sophisticated SaaS and technology consulting powerhouse.",
+    imageUrl: "https://i.imgur.com/ciyhdVb.png", 
+    caseStudy: "Strategic rebranding for a food-tech SaaS provider, shifting from an organic food outlet aesthetic to a professional tech-driven identity.",
     extendedDetails: {
-      role: "Brand Identity Designer",
+      role: "Lead Brand Strategist & Designer",
       platform: "Branding & SaaS Strategy",
-      clientOverview: "Bhojan Byte is a technology consulting firm providing digital infrastructure for the food industry, offering online ordering platforms, POS systems, and operational tools.",
-      challenge: "The initial design (seen in 'Before') felt too much like a consumer-facing restaurant. The client needed to communicate their core identity as a software provider, moving away from a 'food outlet' look to a 'SaaS and Innovation' feel.",
-      solution: "I pivoted the identity toward Structured Geometry. The new logo (seen in 'After') reimagines the primary icon as an isometric 'Data Stack' representing server infrastructure. I shifted to a Deep Navy and Slate Blue palette to evoke professional trust and security.",
+      clientOverview: "BhojanByte is a technology company providing digital infrastructure for the hospitality sector, including POS systems and online ordering platforms.",
+      challenge: "The brand needed to move away from a 'generic restaurant' look to clearly communicate its identity as a software and consulting partner.",
+      solution: "Implemented 'Lead with tech, accent with food' strategy using isometric geometry, a 'Data Stack' icon, and a professional B2B color palette.",
       features: [
-        "Geometric Visual Identity",
-        "B2B Brand Positioning",
-        "Custom Iconography",
-        "Corporate Color Strategy"
+        "Isometric Data Stack Iconography",
+        "Minimalist Industry Integration",
+        "Structured B2B Grid System",
+        "Modern Sans-Serif Typographic Hierarchy"
       ],
-      techStack: ["Adobe Illustrator", "Figma", "Brand Strategy", "SaaS Visual Language"],
-      result: "A high-end identity that successfully communicates innovation and efficiency, positioning the brand as a leader in food-sector digital transformation.",
+      techStack: ["Adobe Illustrator", "Figma", "Brand Architecture", "Vector Design"],
+      result: "Positioned the brand as a leader in the food-tech space with a highly scalable visual system.",
       images: [
-        "https://i.imgur.com/ciyhdVb.png", // Final Result (After)
-        "https://i.imgur.com/tbEzdMW.png"  // Initial Concept (Before)
+        "https://i.imgur.com/ciyhdVb.png",
+        "https://i.imgur.com/tbEzdMW.png"
       ]
     }
   },

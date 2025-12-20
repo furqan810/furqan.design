@@ -6,10 +6,10 @@ export interface NavItem {
 }
 
 export interface Service {
-  id: string; // Added ID for numbering
+  id: string;
   title: string;
   description: string;
-  tags: string[]; // Added tags for more detail
+  tags: string[];
 }
 
 export interface ProjectDetails {
@@ -21,7 +21,7 @@ export interface ProjectDetails {
   features: string[];
   techStack: string[];
   result: string;
-  images: string[]; // Gallery images
+  images: string[];
 }
 
 export interface Project {
@@ -31,8 +31,8 @@ export interface Project {
   year: string;
   imageUrl: string;
   link?: string;
-  caseStudy: string; // Brief description/Fallback
-  extendedDetails?: ProjectDetails; // Optional rich content
+  caseStudy: string;
+  extendedDetails?: ProjectDetails;
 }
 
 export interface SocialLink {
